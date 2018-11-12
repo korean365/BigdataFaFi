@@ -2901,7 +2901,26 @@
 	    }
 	}
 	
+	@media (max-width: 600px) {
+	
+	.allback_memberdele {
+	        width: 80%;
+	        margin-left: -40%;
+	    }
+	}
+	
 	#popLayer_my {
+		z-index: 10000;
+		width: 100%;
+		height: 100%;
+		left: 0px;
+		overflow: auto;
+		background-color: rgba(0, 0, 0, 0.4);
+		display: none;
+		position: fixed;
+	}
+	
+	#popLayer_memberdele {
 		z-index: 10000;
 		width: 100%;
 		height: 100%;
@@ -2922,6 +2941,16 @@
 		position: absolute;
 	}
 	
+	.allback_memberdele {
+		width: 550px;
+		height: 462px;
+		margin-left: -225px;
+		margin-top: -231px;		
+		top: 50%;
+		left: 50%;
+		position: absolute;
+	}
+	
 	#contents_back {
 		border-bottom-left-radius: 10px;
 		border-bottom-right-radius: 10px;
@@ -2933,11 +2962,29 @@
 		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
 					0 6px 20px 0 rgba(0, 0, 0, 0.19);
 	}
+	
+	#contents_back_memberdele {
+		border-bottom-left-radius: 10px;
+		border-bottom-right-radius: 10px;
+		background-color: white;
+		width: 550px;
+		height: 422px;
+		padding: 20px;	
+		box-sizing: border-box;
+		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+					0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	}
 
 	.hidden_my {
 	    display: none;
 	}
 	
+	.page_title_memberdele {
+		font-family: 'Nanum Gothic Coding', monospace;
+		font-size: 14px;
+		font-weight: bold;
+	}
+		
 	#title_back {
 		border-top-left-radius: 10px;
 		border-top-right-radius: 10px;
@@ -3514,6 +3561,42 @@
 		box-sizing: border-box;
 		display: inline-block;
 		cursor: pointer;		
+	}
+	
+	.js-open_memberdele {
+		margin-right: 20px;
+		padding: 15px 20px;	
+		outline: 0px;
+		width: 230px;	
+		font-family: 'Nanum Gothic Coding', monospace;
+		color: white;
+		font-size: 14px;
+		text-decoration: none;
+		text-align: center;
+		border: 1px solid #b77e37;
+		background-color: #f29724;		
+		border-radius: 5px;
+		box-sizing: border-box;
+		display: inline-block;
+		cursor: pointer;		
+	}
+	
+	.member_dele_btn:hover {
+		color: red;
+	}
+	
+	.lef_img_mem {
+		position: relative;
+	}
+	
+	.lef_img_mem_in {
+		position: absolute;
+		top: 350px;
+		left: 0px;
+	}
+	
+	.left_img_td {
+		text-align: center;
 	}
 	
 	.noagree_btn:hover {

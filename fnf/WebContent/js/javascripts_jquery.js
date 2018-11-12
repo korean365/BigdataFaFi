@@ -869,19 +869,123 @@ $(document).ready(function () {
 //idpwsearch.jsp 끝 ////////////////////////////////////////////////////////////////////////////////////////////////	
 
 //myinfo.jsp 시작 ////////////////////////////////////////////////////////////////////////////////////////////////
+/* 회원탈퇴 레이어팝업 jQuery 시작 */
+$('.js-open_memberdele').click(function () {
+	var scrollHeight = 0;
+	
+	scrollHeight = $("body").scrollTop();
+	$("body").addClass("layer-open");
+	$("#popLayer_memberdele").css({
+		"position" : "fixed", //최상위 div 고정 
+		"top" : -scrollHeight // 최상위 div에 현재 스크롤된값 = 보이는화면만큼 top값 추가
+	});
+	
+	$("#popLayer_memberdele").show();
+	
+	var $layer = $('.js-layer_memeberdele');
+    $layer.removeClass('hidden_memeberdele');
+    
+    $(".infoclose_btn_memeberdele").click(function(){
 
+		$("body").removeClass("layer-open");
+		$("#popLayer_memberdele").css({
+			"position" : "relative",
+			"top" : "0"
+		});
 
+		$("body").scrollTop(scrollHeight);
+		$("#popLayer_memberdele").hide();
+	});
+    
+    $("#btn_del_can").click(function(){
+
+		$("body").removeClass("layer-open");
+		$("#popLayer_memberdele").css({
+			"position" : "relative",
+			"top" : "0"
+		});
+
+		$("body").scrollTop(scrollHeight);
+		$("#popLayer_memberdele").hide();
+	});
+});
+/* 회원정보 레이어팝업 jQuery 끝 */
 
 //myinfo.jsp 끝 ////////////////////////////////////////////////////////////////////////////////////////////////
 
+//memberdelet, memberdelete_check.jsp 시작 ////////////////////////////////////////////////////////////////////////////////////////////////
+$("#inputpw1").blur(function(){
+	var mpw = $(this).val();
+	
+	if(mpw != "") {
+		$.ajax({				
+			url: "pwCheck.bizpoll",
+			type: "POST",
+			dataType: "json",
+			data: "id=${sessionScope.loginUser.mid}&pw="+mpw, // 쿼리스트링이라서 "pw=" 공백 사용할 수 없음
+
+			success: function(data) {					
+				if(data.message == "-1"){						
+					$("#inputpw1").parent().parent().next().css("display", "block").css("color", "#0000ff").text("현재 비밀번호가 일치합니다!");
+					$("#inputpw1").focus();
+				} else {						
+					$("#inputpw1").parent().parent().next().css("display", "block").css("color", "#f46665").text("현재 비밀번호가 일치하지 않습니다.");
+					$("#inputpw1").select();						
+				}
+			},
+			
+			error: function(){
+				alert("System Error!!!");
+			}
+		});
+	}
+});
 
 
+$(document).on("click", "#btn_del", function() {
+	var
+	form = $("#frm_del"),
+	pw = $("#inputpw1")	
+	
+	// 비밀번호 유효성 검사
 
+	var mpw = $.trim(pw.val());
+	
+	if(mpw == "") {			
+		pw.focus();
+		pw.parent().parent().next().css("display", "block").text("필수 정보입니다.");
+		return false;
+	} else if(mpw != "") {
+		$.ajax({				
+			url: "pwCheck.bizpoll",
+			type: "POST",
+			dataType: "json",
+			data: "id=${sessionScope.loginUser.mid}&pw="+mpw, // 쿼리스트링이라서 "mpw=" 공백 사용할 수 없음
 
+			success: function(data) {					
+				if(data.message == "-1"){						
+					$("#modal_leavecheck").css("display", "block");
+				} else {						
+					$("#inputpw1").parent().parent().next().css("display", "block").css("color", "#f46665").text("현재 비밀번호가 일치하지 않습니다.");
+					$("#inputpw1").select();
+				}
+			},
+				
+			error: function(){
+				alert("System Error!!!");
+			}
+		});
+	}
+});
 
+$(document).on("click", "#btn_delok", function() {
+	var
+	form = $("#frm_delok")
 
+	form.submit();
+});
 
-
+//memberdelet, memberdelete_check.jsp 끝 ////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 

@@ -31,8 +31,13 @@
 								</div>								
 								<table width="100%">
 									<tr>
-										<td width="230px" valign="top">											
-											<img src="img/join_img3.png" alt="" class="img_style">											
+										<td width="230px" valign="top" class="left_img_td">											
+											<div class="lef_img_mem">
+												<img src="img/join_img3.png" alt="" class="img_style">
+												<div class="lef_img_mem_in">
+													<button type="button" class="js-open_memberdele">회원 탈퇴</button>
+												</div>
+											</div>																																	
 										</td>
 										<td width="40px"></td>
 										<td>

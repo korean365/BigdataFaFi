@@ -24,6 +24,7 @@ import com.fnf.Action.LogOutPlayAction;
 import com.fnf.Action.LoginAction;
 import com.fnf.Action.LoginPlayAction;
 import com.fnf.Action.MemberInputPlayAction;
+import com.fnf.Action.MemberLeavePlayAction;
 import com.fnf.Action.MemberUpdatePlayAction;
 import com.fnf.Action.MyDiaryAction;
 import com.fnf.Action.MyDiaryDetailAction;
@@ -31,6 +32,7 @@ import com.fnf.Action.MyDiaryWriteAction;
 import com.fnf.Action.MyInfoAction;
 import com.fnf.Action.NickCheckAction;
 import com.fnf.Action.PraviteAgreeMentAction;
+import com.fnf.Action.PwCheckAction;
 import com.fnf.Action.RuralAction;
 import com.fnf.Action.UseAgreeMentAction;
 
@@ -139,6 +141,12 @@ public class BizpollFrontController extends HttpServlet {
 			forward = action.excute(request, response); // 객체 사용
 		} else if(command.equals("/memberupdateplay.bizpoll")) {
 			action = new MemberUpdatePlayAction(); // 객체 생성
+			forward = action.excute(request, response); // 객체 사용
+		} else if(command.equals("/pwCheck.bizpoll")) {
+			action = new PwCheckAction(); // 객체 생성
+			forward = action.excute(request, response); // 객체 사용
+		} else if(command.equals("/memberleaveplay.bizpoll")) {
+			action = new MemberLeavePlayAction(); // 객체 생성
 			forward = action.excute(request, response); // 객체 사용
 		} 
 		

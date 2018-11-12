@@ -48,6 +48,20 @@
 		WHERE id = #{mid}		
 	</update>
 	<!-- 회원정보 수정 내용 끝 -->	
+	
+	<!-- 회원탈퇴를 위한 Password 중복체크(Ajax) 시작 -->
+	<select id="confirmPW" parameterType="com.fnf.DTO.MemberDTO" resultType="String">
+		SELECT mid FROM fnfmembertable
+		WHERE mid = #{mid} AND mpw = #{mpw}
+	</select>
+	<!-- 회원탈퇴를 위한 Password 중복체크(Ajax) 끝 -->
+	
+	<!-- 회원탈퇴 시작 -->
+	<update id="delID" parameterType="String">
+		DELETE FROM fnfmembertable
+		WHERE mid = #{mid}	
+	</update>
+	<!-- 회원탈퇴 끝 -->
 		
 <!-- MemberDAO 내용 끝 -->	
 

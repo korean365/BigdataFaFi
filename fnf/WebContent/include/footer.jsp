@@ -32,6 +32,7 @@
 		<!-- Footer 끝 -->
 		<!-- 회원정보 레이어 팝업 시작 -->
 		<%@ include file="../include/myinfopop.jsp"%>
+		<%@ include file="../include/memberdelete.jsp"%>
 		<!-- 회원정보 레이어 팝업 끝 -->	
 	</footer>
 </body>
