@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com/fnf/Mybatis/FNFMapper.xml">
+<!-- SQL 문 여기에 작성, DAO SQL 문 안쓰고 최소화 시킴 -->
+	
+<!-- MemberDAO 내용 시작 -->
+
+	<!-- 회원가입 페이지 ID 중복체크(Ajax) 시작 -->
+	<select id="confirmID" parameterType="String" resultType="String"> <!-- resultType은 select만 작성 -->
+		SELECT mid FROM fnfmembertable
+		WHERE mid = #{mid}
+	</select>
+	<!-- 회원가입 페이지 ID 중복체크(Ajax) 끝 -->
+	
+	<!-- 회원가입 페이지 별명 중복체크(Ajax) 시작 -->
+	<select id="confirmNick" parameterType="String" resultType="String"> <!-- resultType은 select만 작성 -->
+		SELECT mnick FROM fnfmembertable
+		WHERE mnick = #{mnick}
+	</select>
+	<!-- 회원가입 페이지 별명 중복체크(Ajax) 끝 -->
+	
+	<!-- 회원등록 내용 시작 -->
+	<insert id="inputMember" parameterType="com.fnf.DTO.MemberDTO">
+		INSERT INTO fnfmembertable (mno, mid, mnick, mpw, mname, mbirth, mgender, mphone, mzipcode, maddr, maddrdetail, myakyn, mpraviteyn, mlocyn, mmailingyn)
+		VALUES(seq_fnfmembertable.NEXTVAL, #{mid}, #{mnick}, #{mpw}, #{mname}, #{mbirth}, #{mgender}, #{mphone}, #{mzipcode}, #{maddr}, #{maddrdetail}, #{myakyn}, #{mpraviteyn}, #{mlocyn}, #{mmailingyn})
+	</insert>
+	<!-- 회원등록 내용 끝 -->	
+
+	<!-- 회원여부 확인 시작 -->
+	<select id="loginCheck" parameterType="com.fnf.DTO.MemberDTO" resultType="com.fnf.DTO.MemberDTO"> <!-- 로그인 성공여부는 resultType은 DTO -->
+		SELECT * FROM fnfmembertable
+		WHERE mid = #{mid} AND mpw = #{mpw}
+	</select>
+	<!-- 회원여부 확인 끝 -->
+	
+	<!-- 회원정보 수정 내용 시작 -->
+	<update id="updateMember" parameterType="com.fnf.DTO.MemberDTO">
+		UPDATE fnfmembertable SET
+		mnick = #{mnick},
+		mpw	= #{mpw},			
+		mphone = #{mphone},
+		mzipcode = #{mzipcode},
+		maddr = #{maddr},
+		maddrdetail = #{maddrdetail}
+		WHERE id = #{mid}		
+	</update>
+	<!-- 회원정보 수정 내용 끝 -->	
+		
+<!-- MemberDAO 내용 끝 -->	
+
+</mapper>
+
