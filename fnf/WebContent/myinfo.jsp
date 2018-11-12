@@ -54,7 +54,7 @@
 													</div>											
 												</div>
 												<div class="err_check_msg" id="mag_nick_ok">
-													필수 정보입니다.
+													필수 정보입니다. <!-- 테스트  -->
 												</div>	
 												<div class="member_el">
 													<div>
